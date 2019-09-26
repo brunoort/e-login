@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Component, Inject } from '@nestjs/common';
 import { Contact } from './interfaces/contact.interface';
-import { ContactDto } from './dto/contact.dto';
+import { CreateContactDto } from './dto/create-contact.dto';
 
 @Component()
 export class ContactsService {
@@ -9,8 +9,8 @@ export class ContactsService {
     @Inject('ContactModelToken') private readonly contactModel: Model<Contact>
   ) {}
 
-  async create(contactDto: ContactDto): Promise<Contact> {
-    const createdContact = new this.contactModel(contactDto);
+  async create(createContactDto: CreateContactDto): Promise<Contact> {
+    const createdContact = new this.contactModel(createContactDto);
     return await createdContact.save();
   }
 
