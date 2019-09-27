@@ -1,13 +1,14 @@
 import * as mongoose from 'mongoose';
 
-export const ContactSchema = new mongoose.Schema(
+export const CompaniesSchema = new mongoose.Schema(
   {
     name: { type: String, require: true, unique: true },
+    cnpj: String,
     email: String,
     phone: String
   },
   {
-    collection: 'contacts',
+    collection: 'companies',
     read: 'nearest'
   }
 );
